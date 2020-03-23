@@ -83,21 +83,20 @@ class UserMessageList(generics.ListCreateAPIView):
     serializer_class = UserMessageSerializer
 
     def get_queryset(self):
-        first_user_id = self.request.query_params.get("first_user_id")
-        second_user_id = self.request.query_params.get("second_user_id")
+        to_user_id = self.request.query_params.get("second_user_id")
 
-        if first_user_id and second_user_id:
-            first_user = User.objects.all().get(pk=first_user_id)
-            second_user = User.objects.all().get(pk=second_user_id)
+        if to_user_id:
+            to_user = User.objects.all().get(pk=to_user_id)
 
             return UserMessage.objects.all().filter(
-                Q(owner=first_user, to_user_msg=second_user) | Q(owner=second_user, to_user_msg=first_user)).order_by(
+                Q(owner=self.request.user, to_user_msg=to_user) | Q(owner=to_user,
+                                                                    to_user_msg=self.request.user)).order_by(
                 'time')
 
         return UserMessage.objects.all()
 
     def perform_create(self, serializer):
-        serializer.save(time=timezone.now())
+        serializer.save(time=timezone.now(), owner=self.request.user)
 
 
 class SiteUserList(generics.ListCreateAPIView):
