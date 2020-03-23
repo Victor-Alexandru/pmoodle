@@ -45,3 +45,9 @@ class SurveyQuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = SurveyQuestion
         fields = ['id', 'text', 'points', 'type', ]
+
+
+class UserMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserMessage
+        fields = ['id', 'text', 'owner', 'to_user_msg', 'time']

@@ -8,5 +8,5 @@ urlpatterns = [
     path('skills/<int:pk>/', views.SkillDetail.as_view()),
     path('groups/', views.GroupList.as_view()),
     path('groups/<int:pk>/', views.GroupDetail.as_view()),
-
+    path('user-messages/', views.UserMessageList.as_view()),
 ]
