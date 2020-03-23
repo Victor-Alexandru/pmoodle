@@ -51,3 +51,9 @@ class UserMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserMessage
         fields = ['id', 'text', 'owner', 'to_user_msg', 'time']
+
+
+class SiteUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Site_User
+        fields = ['id', 'location', 'user', 'first_name']

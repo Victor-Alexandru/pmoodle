@@ -98,3 +98,26 @@ class UserMessageList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(time=timezone.now())
+
+
+class SiteUserList(generics.ListCreateAPIView):
+    serializer_class = SiteUserSerializer
+
+    def get_queryset(self):
+        locality = self.request.query_params.get("locality")
+        if locality:
+            return Site_User.objects.all().filter(location=locality).exclude(user=self.request.user)
+        else:
+            return Site_User.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+
+class SiteUserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Site_User.objects.all()
+
+    serializer_class = SiteUserSerializer
+
+    def perform_update(self, serializer):
+        serializer.save()

@@ -2,6 +2,17 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+def has_site_user(self):
+    try:
+        self.site_user
+    except Exception as e:
+        return False
+    return True
+
+
+User.add_to_class("has_site_user", has_site_user)
+
+
 class Skill(models.Model):
     # TODO: enums for skills and Domain Skill
     name = models.TextField(null=True, blank=True)
@@ -111,3 +122,15 @@ class UserMessage(models.Model):
     to_user_msg = models.ForeignKey(User, on_delete=models.CASCADE, related_name='to_user')
     time = models.DateTimeField(null=True, blank=True)
     text = models.TextField(null=True, blank=True)
+
+
+class Site_User(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # TODO: enums for Location ,maybe county added
+    location = models.TextField(null=True, blank=True)
+    first_name = models.TextField(null=True, blank=True)
+
+    # TODO: add image file
+
+    def __str__(self):
+        return self.user.username
