@@ -134,3 +134,22 @@ class UserGroupList(generics.ListCreateAPIView):
 class UserGroupDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserGroup.objects.all()
     serializer_class = UserGroupSerializer
+
+
+class GroupNotificationList(generics.ListCreateAPIView):
+    serializer_class = GroupNotificationSerializer
+
+    # permissions = (IsAuthenticated,)
+
+    def get_queryset(self):
+        group_id = self.request.query_params.get("group_id")
+        if group_id:
+            return GroupNotification.objects.all().filter(group=Group.objects.get(pk=group_id))
+        else:
+            return GroupNotification.objects.all()
+
+    def perform_create(self, serializer):
+        group = serializer.validated_data.get('group')
+        if self.request.user != group.owner:
+            raise Exception("Only the owner can post notifications")
+        serializer.save(created_at=timezone.now())

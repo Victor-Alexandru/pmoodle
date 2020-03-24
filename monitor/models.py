@@ -62,7 +62,7 @@ class Notification(models.Model):
 
 class UserGroup(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE,related_name="groupings")
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="groupings")
     isTeacher = models.BooleanField(default=False)
     isLearner = models.BooleanField(default=True)
     start_at = models.DateField(null=True)
@@ -81,8 +81,9 @@ class GroupNotification(models.Model):
         ('HG', 'HIGH'),
     )
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    notification = models.ForeignKey(Notification, on_delete=models.DO_NOTHING)
-    created_at = models.DateField(null=True)
+    message = models.TextField()
+    color = models.TextField()
+    created_at = models.DateTimeField(null=True)
     priority = models.CharField(max_length=2,
                                 choices=PRIORITIES,
                                 default=LOW, )

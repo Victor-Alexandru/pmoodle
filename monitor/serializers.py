@@ -66,3 +66,9 @@ class UserGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserGroup
         fields = ["isTeacher", "isLearner", "user", "group"]
+
+
+class GroupNotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GroupNotification
+        fields = ["message", "color", "priority", "group"]
