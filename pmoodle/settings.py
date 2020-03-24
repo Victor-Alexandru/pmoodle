@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+from datetime import timedelta
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -58,7 +60,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES":
-        ["rest_framework.permissions.IsAuthenticated", ],
+    # ["rest_framework.permissions.IsAuthenticated", ],
+        [],
     "DEFAULT_PARSER_CLASSES": ["rest_framework.parsers.JSONParser", ],
     "DEFAULT_AUTHENTICATION_CLASSES": [  # new
         "rest_framework.authentication.SessionAuthentication",  # new
@@ -90,6 +93,10 @@ WSGI_APPLICATION = 'pmoodle.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=5),
+}
 
 DATABASES = {
     'default': {

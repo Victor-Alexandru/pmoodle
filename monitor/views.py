@@ -28,14 +28,14 @@ class SkillDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class GroupList(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
     serializer_class = GroupSerializer
 
     def get_queryset(self):
         user = self.request.user
         if user.is_authenticated:
-            return Group.objects.filter(owner=user)
-        raise PermissionDenied()
+            return [ug.group for ug in UserGroup.objects.filter(user=self.request.user)]
+        else:
+            return Group.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -120,3 +120,17 @@ class SiteUserDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def perform_update(self, serializer):
         serializer.save()
+
+
+class UserGroupList(generics.ListCreateAPIView):
+    queryset = UserGroup.objects.all()
+    serializer_class = UserGroupSerializer
+    permissions = (IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user, start_at=timezone.now())
+
+
+class UserGroupDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = UserGroup.objects.all()
+    serializer_class = UserGroupSerializer

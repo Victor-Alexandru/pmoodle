@@ -6,7 +6,7 @@ from .models import *
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'password', 'email']
+        fields = ['id', 'username', 'email']
 
 
 class SkillSerializer(serializers.ModelSerializer):
@@ -58,3 +58,11 @@ class SiteUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Site_User
         fields = ['id', 'location', 'user', 'first_name']
+
+
+class UserGroupSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = UserGroup
+        fields = ["isTeacher", "isLearner", "user", "group"]
