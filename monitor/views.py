@@ -153,3 +153,20 @@ class GroupNotificationList(generics.ListCreateAPIView):
         if self.request.user != group.owner:
             raise Exception("Only the owner can post notifications")
         serializer.save(created_at=timezone.now())
+
+
+class UserSkillList(generics.ListCreateAPIView):
+    serializer_class = UserSkillSerializer
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            return UserSkill.objects.filter(user=self.request.user)
+        return []
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+class UserSkillDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = UserSkill.objects.all()
+    serializer_class = UserSkillSerializer

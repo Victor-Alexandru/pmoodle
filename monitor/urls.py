@@ -16,5 +16,7 @@ urlpatterns = [
     path('user-groups/', views.UserGroupList.as_view()),
     path('user-groups/<int:pk>/', views.UserGroupDetail.as_view()),
     path('group-notifications/', views.GroupNotificationList.as_view()),
+    path('user-skills/', views.UserSkillList.as_view()),
+    path('user-skills/<int:pk>/', views.UserSkillDetail.as_view()),
 
 ]

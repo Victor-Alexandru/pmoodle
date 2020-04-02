@@ -48,7 +48,7 @@ class UserSkill(models.Model):
     level = models.CharField(max_length=2,
                              choices=LEVELS,
                              default=Beginner, )
-    yearsOfExperience = models.IntegerField()
+    years_of_experience = models.IntegerField()
 
 
 class Notification(models.Model):

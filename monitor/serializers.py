@@ -71,3 +71,11 @@ class GroupNotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = GroupNotification
         fields = ["message", "color", "priority", "group"]
+
+
+class UserSkillSerializer(serializers.ModelSerializer):
+    skill = SkillSerializer(read_only=True)
+
+    class Meta:
+        model = UserSkill
+        fields = ["skill", "level", "years_of_experience"]
