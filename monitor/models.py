@@ -42,8 +42,8 @@ class UserSkill(models.Model):
         ('EX', 'Expert'),
         ('MS', 'Master'),
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    skill = models.ForeignKey(Skill, on_delete=models.CASCADE, null=False)
     # TODO: enums for level
     level = models.CharField(max_length=2,
                              choices=LEVELS,
