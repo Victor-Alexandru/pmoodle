@@ -33,7 +33,11 @@ class GroupList(generics.ListCreateAPIView):
     def get_queryset(self):
         user = self.request.user
         if user.is_authenticated:
-            return [ug.group for ug in UserGroup.objects.filter(user=self.request.user)]
+            owner_id = self.request.query_params.get("owner_id")
+            if self.request.query_params.get("owner_id"):
+                return Group.objects.filter(owner=User.objects.get(pk=owner_id))
+            else:
+                return [ug.group for ug in UserGroup.objects.filter(user=self.request.user)]
         else:
             return Group.objects.all()
 
@@ -123,9 +127,15 @@ class SiteUserDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class UserGroupList(generics.ListCreateAPIView):
-    queryset = UserGroup.objects.all()
     serializer_class = UserGroupSerializer
     permissions = (IsAuthenticated,)
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_authenticated:
+            return UserGroup.objects.filter(user=user)
+        else:
+            return UserGroup.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user, start_at=timezone.now())
