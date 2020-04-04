@@ -180,3 +180,13 @@ class UserSkillList(generics.ListCreateAPIView):
 class UserSkillDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserSkill.objects.all()
     serializer_class = UserSkillSerializer
+
+
+class RequestToGroupList(generics.ListCreateAPIView):
+    queryset = RequestToGroup.objects.all()
+    serializer_class = RequestToGroupSerializer
+
+
+class RequestToGroupDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = RequestToGroup.objects.all()
+    serializer_class = RequestToGroupSerializer

@@ -63,7 +63,7 @@ class Notification(models.Model):
     # TODO: add the video for notification
 
 
-class UserGroup(models.Model): #Members table
+class UserGroup(models.Model):  # Members table
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="groupings")
     isTeacher = models.BooleanField(default=False)
@@ -144,3 +144,13 @@ class Site_User(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class RequestToGroup(models.Model):
+    request_from = models.ForeignKey(User, on_delete=models.CASCADE, related_name='from_user_request')
+    request_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='to_user_request')
+    time = models.DateTimeField(null=True, blank=True)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "From " + self.request_from.username + " to: " + self.request_to.username + " for group " + self.group.name
