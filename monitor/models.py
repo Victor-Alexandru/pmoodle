@@ -30,6 +30,9 @@ class Group(models.Model):
     owner = models.ForeignKey(User, related_name="groupings"
                               , on_delete=models.CASCADE, null=False)
 
+    def __str__(self):
+        return self.name
+
 
 class UserSkill(models.Model):
     Beginner = 'BG'
@@ -70,6 +73,9 @@ class UserGroup(models.Model):
     class Meta:
         unique_together = (("user", "group"),)
 
+    def __str__(self):
+        return self.user.username + "  assigned to  " + self.group.name
+
 
 class GroupNotification(models.Model):
     LOW = 'LW'
@@ -87,6 +93,9 @@ class GroupNotification(models.Model):
     priority = models.CharField(max_length=2,
                                 choices=PRIORITIES,
                                 default=LOW, )
+
+    def __str__(self):
+        return self.group.name + "  --   " + self.message
 
 
 class Survey(models.Model):
