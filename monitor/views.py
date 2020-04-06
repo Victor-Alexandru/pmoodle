@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 
 # Create your views here.
+from rest_framework.decorators import api_view
 from rest_framework.exceptions import PermissionDenied
+from rest_framework.response import Response
+
 from monitor.serializers import *
 from rest_framework import generics
 from rest_framework import permissions
@@ -190,3 +193,18 @@ class RequestToGroupList(generics.ListCreateAPIView):
 class RequestToGroupDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = RequestToGroup.objects.all()
     serializer_class = RequestToGroupSerializer
+
+
+@api_view(['GET'])
+def site_user_detail(request):
+    """
+    Retrieve the current site-user.
+    """
+    if request.user.is_authenticated:
+        site_user = Site_User.objects.get(user=request.user.id)
+
+        serializer = SiteUserSerializer(site_user)
+
+        return Response(serializer.data, status=200)
+    else:
+        return Response({}, status=400)

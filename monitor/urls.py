@@ -20,5 +20,6 @@ urlpatterns = [
     path('user-skills/<int:pk>/', views.UserSkillDetail.as_view()),
     path('request-groups/', views.RequestToGroupList.as_view()),
     path('request-groups/<int:pk>/', views.RequestToGroupDetail.as_view()),
+    path('token-site-user/', views.site_user_detail),
 
 ]

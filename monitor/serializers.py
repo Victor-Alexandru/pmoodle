@@ -82,8 +82,9 @@ class UserSkillSerializer(serializers.ModelSerializer):
 
 
 class RequestToGroupSerializer(serializers.ModelSerializer):
-    group = SkillSerializer(read_only=True)
+    group = GroupSerializer(read_only=True)
+    request_from = UserSerializer(read_only=True)
 
     class Meta:
         model = RequestToGroup
-        fields = ["request_from", "request_to", "time","group"]
+        fields = ["request_from", "request_to", "time", "group", "status"]

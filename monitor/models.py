@@ -147,6 +147,15 @@ class Site_User(models.Model):
 
 
 class RequestToGroup(models.Model):
+    ACCEPTED = 'AC'
+    PENDING = 'PG'
+    PRIORITIES = (
+        ('AC', 'ACCEPT'),
+        ('PG', 'PENDING'),
+    )
+    status = models.CharField(max_length=2,
+                             choices=PRIORITIES,
+                             default=ACCEPTED, null=False)
     request_from = models.ForeignKey(User, on_delete=models.CASCADE, related_name='from_user_request')
     request_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='to_user_request')
     time = models.DateTimeField(null=True, blank=True)
