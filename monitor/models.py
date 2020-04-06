@@ -149,9 +149,11 @@ class Site_User(models.Model):
 class RequestToGroup(models.Model):
     ACCEPTED = 'AC'
     PENDING = 'PG'
+    CLOSED = 'CL'
     PRIORITIES = (
         ('AC', 'ACCEPT'),
         ('PG', 'PENDING'),
+        ('CL', 'CLOSED'),
     )
     status = models.CharField(max_length=2,
                              choices=PRIORITIES,

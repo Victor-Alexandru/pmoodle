@@ -7,7 +7,7 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 
 from monitor.serializers import *
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework import permissions
 from rest_framework.permissions import IsAuthenticated
 from django.db.models import Q
@@ -187,14 +187,31 @@ class UserSkillDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class RequestToGroupList(generics.ListCreateAPIView):
     permissions = [IsAuthenticated, ]
-
-    queryset = RequestToGroup.objects.all()
     serializer_class = RequestToGroupSerializer
+
+    def get_queryset(self):
+        return RequestToGroup.objects.filter(request_to=self.request.user)
+
+    def perform_create(self, serializer):
+        group = self.request.data.get('group_id')
+        if group:
+            serializer.save(request_from=self.request.user, time=timezone.now(), group=Group.objects.get(pk=group))
+        else:
+            serializer.save(request_from=self.request.user, time=timezone.now())
 
 
 class RequestToGroupDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = RequestToGroup.objects.all()
     serializer_class = RequestToGroupSerializer
+
+    def perform_update(self, serializer):
+        new_status = serializer.validated_data.get('status')
+        if new_status == 'AC' and self.get_object().status == 'PG':
+            ug = UserGroup(user=self.get_object().request_from, isLearner=True, isTeacher=False,
+                           start_at=timezone.now(), group=self.get_object().group)
+            ug.save()
+            print("---------Avem UG pt request la patch ---------------")
+        serializer.save()
 
 
 @api_view(['GET'])

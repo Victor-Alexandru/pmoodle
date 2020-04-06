@@ -64,7 +64,7 @@ class UserGroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserGroup
-        fields = ["isTeacher", "isLearner", "user", "group"]
+        fields = ["id", "isTeacher", "isLearner", "user", "group"]
 
 
 class GroupNotificationSerializer(serializers.ModelSerializer):
@@ -87,4 +87,6 @@ class RequestToGroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RequestToGroup
-        fields = ["request_from", "request_to", "time", "group", "status"]
+        fields = ["id", "request_from", "request_to", "group", "status"]
+        read_only_fields = ('time',)
+        write_only_fields = ('group_id',)
