@@ -186,6 +186,8 @@ class UserSkillDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class RequestToGroupList(generics.ListCreateAPIView):
+    permissions = [IsAuthenticated, ]
+
     queryset = RequestToGroup.objects.all()
     serializer_class = RequestToGroupSerializer
 

@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="760728e6-7e9b-4294-bde7-42601700216b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitor/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitor/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitor/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monitor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/monitor/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="24" />
+              <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -68,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="640">
-              <caret line="202" column="20" selection-start-line="202" selection-start-column="20" selection-end-line="202" selection-end-column="20" />
+            <state relative-caret-position="365">
+              <caret line="188" column="19" selection-start-line="188" selection-start-column="19" selection-end-line="188" selection-end-column="19" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -83,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
+            <state relative-caret-position="2669">
               <caret line="158" column="16" selection-start-line="158" selection-start-column="4" selection-end-line="158" selection-end-column="16" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -92,7 +88,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="671">
@@ -107,7 +103,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="170">
               <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -155,8 +151,8 @@
         <option value="$PROJECT_DIR$/monitor/admin.py" />
         <option value="$PROJECT_DIR$/monitor/models.py" />
         <option value="$PROJECT_DIR$/monitor/urls.py" />
-        <option value="$PROJECT_DIR$/monitor/views.py" />
         <option value="$PROJECT_DIR$/monitor/serializers.py" />
+        <option value="$PROJECT_DIR$/monitor/views.py" />
       </list>
     </option>
   </component>
@@ -172,7 +168,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -199,6 +194,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,16 +278,18 @@
       <workItem from="1585766150850" duration="1705000" />
       <workItem from="1585823715938" duration="2944000" />
       <workItem from="1585996748746" duration="9732000" />
+      <workItem from="1586159564271" duration="871000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49859000" />
+    <option name="totallyTimeSpent" value="50730000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1641791" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16577825" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -444,16 +442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jwtauth/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -464,32 +452,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="202" column="20" selection-start-line="202" selection-start-column="20" selection-end-line="202" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monitor/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monitor/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
+        <state relative-caret-position="2669">
           <caret line="158" column="16" selection-start-line="158" selection-start-column="4" selection-end-line="158" selection-end-column="16" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -500,6 +478,26 @@
           <caret line="84" column="27" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="188" column="19" selection-start-line="188" selection-start-column="19" selection-end-line="188" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
