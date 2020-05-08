@@ -64,7 +64,7 @@ class Notification(models.Model):
 
 
 class UserGroup(models.Model):  # Members table
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE  )
     group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="groupings")
     isTeacher = models.BooleanField(default=False)
     isLearner = models.BooleanField(default=True)
