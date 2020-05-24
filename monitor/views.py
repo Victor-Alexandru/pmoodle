@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -40,15 +40,20 @@ class GroupList(generics.ListCreateAPIView):
             if self.request.query_params.get("owner_id"):
                 return Group.objects.filter(owner=User.objects.get(pk=owner_id))
             else:
-                return [ug.group for ug in UserGroup.objects.filter(user=self.request.user)]
+                return [ug.group for ug in UserGroup.objects.filter(user=self.request.user)] + [gr for gr in
+                                                                                                Group.objects.filter(
+                                                                                                    owner=self.request.user)]
         else:
             return Group.objects.all()
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        skill_name = self.request.data.get('skill_name')
+        new_skill = Skill(name=skill_name)
+        new_skill.save()
+        serializer.save(owner=self.request.user, skill=new_skill)
 
 
-class GroupDetail(generics.RetrieveAPIView):
+class GroupDetail(generics.RetrieveDestroyAPIView):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
@@ -118,6 +123,19 @@ class SiteUserList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save()
+
+
+class MembersList(generics.ListAPIView):
+    serializer_class = SiteUserSerializer
+
+    def get_queryset(self):
+        group_id = self.request.query_params.get("group_id")
+        group_obj = get_object_or_404(Group, pk=group_id)
+        if group_obj:
+            return Site_User.objects.all().filter(user=UserGroup.objects.all(group=group_obj)).exclude(
+                user=self.request.user)
+        else:
+            return Site_User.objects.all()
 
 
 class SiteUserDetail(generics.RetrieveUpdateDestroyAPIView):
