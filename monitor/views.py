@@ -40,9 +40,11 @@ class GroupList(generics.ListCreateAPIView):
             if self.request.query_params.get("owner_id"):
                 return Group.objects.filter(owner=User.objects.get(pk=owner_id))
             else:
-                return [ug.group for ug in UserGroup.objects.filter(user=self.request.user)] + [gr for gr in
-                                                                                                Group.objects.filter(
-                                                                                                    owner=self.request.user)]
+                return [ug.group for ug in
+                        UserGroup.objects.filter(user=self.request.user).exclude(user=self.request.user,
+                                                                                 isTeacher=True)] + [gr for gr in
+                                                                                                     Group.objects.filter(
+                                                                                                         owner=self.request.user)]
         else:
             return Group.objects.all()
 
@@ -50,7 +52,10 @@ class GroupList(generics.ListCreateAPIView):
         skill_name = self.request.data.get('skill_name')
         new_skill = Skill(name=skill_name)
         new_skill.save()
-        serializer.save(owner=self.request.user, skill=new_skill)
+        new_group_obj = serializer.save(owner=self.request.user, skill=new_skill)
+        new_role = UserGroup(group=new_group_obj, user=self.request.user, isTeacher=True, isLearner=False,
+                             start_at=timezone.now())
+        new_role.save()
 
 
 class GroupDetail(generics.RetrieveDestroyAPIView):
