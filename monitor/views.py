@@ -132,8 +132,7 @@ class MembersList(generics.ListAPIView):
         group_id = self.request.query_params.get("group_id")
         group_obj = get_object_or_404(Group, pk=group_id)
         if group_obj:
-            users = []
-            users.append(group_obj.owner)
+            users = [group_obj.owner]
             users = users + [ug.user for ug in UserGroup.objects.all().filter(group=group_obj)]
 
             return Site_User.objects.all().filter(user__in=users).exclude(user=self.request.user)
