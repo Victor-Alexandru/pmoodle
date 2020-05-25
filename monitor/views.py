@@ -169,9 +169,30 @@ class UserGroupList(generics.ListCreateAPIView):
         serializer.save(user=self.request.user, start_at=timezone.now())
 
 
+class UserGroupListByGroup(generics.ListCreateAPIView):
+    serializer_class = UserGroupSerializer
+    permissions = (IsAuthenticated,)
+
+    def get_queryset(self):
+        group_id = self.request.query_params.get("group_id")
+        group_obj = get_object_or_404(Group, pk=group_id)
+        if group_obj:
+            return UserGroup.objects.filter(group=group_obj)
+        else:
+            return UserGroup.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user, start_at=timezone.now())
+
+
 class UserGroupDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserGroup.objects.all()
     serializer_class = UserGroupSerializer
+
+    def perform_destroy(self, instance):
+        if self.request.user != instance.group.owner:
+            raise PermissionDenied()
+        instance.delete()
 
 
 class GroupNotificationList(generics.ListCreateAPIView):

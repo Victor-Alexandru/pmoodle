@@ -15,7 +15,7 @@ class SkillSerializer(serializers.ModelSerializer):
 
 
 class GroupSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
+    owner = serializers.ReadOnlyField(source='owner.id')
     skill = SkillSerializer(read_only=True)
 
     class Meta:
