@@ -1,0 +1,5 @@
+1.Your profile detail text
+2.Update la Group
+3.Detail user profile la user
+4.UI bug notification CARD
+5.UI bug cand se schimba dintre login si selection screen
