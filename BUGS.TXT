@@ -3,3 +3,10 @@
 3.Detail user profile la user
 4.UI bug notification CARD
 5.UI bug cand se schimba dintre login si selection screen
+6.SEND notification form beutiful
+7.UI + titlu + lista - se face cu un appbar
+9.REGISTER + validari
+10 VALIDARI-INTERNET SI LOCATIE
+----------------------------EMERNGENCY
+1.FIREBASE BUG - sa fie dinamic UG,puse pe cloud-
+2.REGISTER -
