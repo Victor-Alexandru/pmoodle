@@ -1,12 +1,12 @@
 1.Your profile detail text
 2.Update la Group
 3.Detail user profile la user
-4.UI bug notification CARD
+4.UI bug notification CARD - FACUT -> poate trebuie wrap si in alte parti
 5.UI bug cand se schimba dintre login si selection screen
 6.SEND notification form beutiful
 7.UI + titlu + lista - se face cu un appbar
 9.REGISTER + validari
 10 VALIDARI-INTERNET SI LOCATIE
 ----------------------------EMERNGENCY
-1.FIREBASE BUG - sa fie dinamic UG,puse pe cloud-
+1.FIREBASE BUG - sa fie dinamic UG,puse pe cloud- FACUTE
 2.REGISTER -
