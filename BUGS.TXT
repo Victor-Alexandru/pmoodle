@@ -9,3 +9,4 @@
 1.FIREBASE BUG - sa fie dinamic UG,puse pe cloud- FACUT
 2.REGISTER -
 -> show SnackBar cand registeru e good
+-> modal daca vrea sa modifice locatia cand o seteaza
