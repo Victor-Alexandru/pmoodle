@@ -64,7 +64,7 @@ class Notification(models.Model):
 
 
 class UserGroup(models.Model):  # Members table
-    user = models.ForeignKey(User, on_delete=models.CASCADE  )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="groupings")
     isTeacher = models.BooleanField(default=False)
     isLearner = models.BooleanField(default=True)
@@ -139,6 +139,7 @@ class Site_User(models.Model):
     # TODO: enums for Location ,maybe county added
     location = models.TextField(null=True, blank=True)
     first_name = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True, default=" Eager to teach things")
 
     # TODO: add image file
 
@@ -156,8 +157,8 @@ class RequestToGroup(models.Model):
         ('CL', 'CLOSED'),
     )
     status = models.CharField(max_length=2,
-                             choices=PRIORITIES,
-                             default=ACCEPTED, null=False)
+                              choices=PRIORITIES,
+                              default=ACCEPTED, null=False)
     request_from = models.ForeignKey(User, on_delete=models.CASCADE, related_name='from_user_request')
     request_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='to_user_request')
     time = models.DateTimeField(null=True, blank=True)
