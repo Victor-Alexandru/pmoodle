@@ -15,14 +15,20 @@ User = get_user_model()
 @decorators.api_view(["POST"])
 @decorators.permission_classes([permissions.AllowAny])
 def registration(request):
+    description = request.data.get("description")
     serializer = UserCreateSerializer(data=request.data)
     if not serializer.is_valid():
         return response.Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
     user = serializer.save()
     # when the user is ready we need to create a site user
-    site_user = Site_User(user=user, first_name=user.username)
-    site_user.id = user.id
-    site_user.save()
+    if description:
+        site_user = Site_User(user=user, first_name=user.username, description=description)
+        site_user.id = user.id
+        site_user.save()
+    else:
+        site_user = Site_User(user=user, first_name=user.username)
+        site_user.id = user.id
+        site_user.save()
 
     refresh = RefreshToken.for_user(user)
     res = {
