@@ -1,12 +1,7 @@
 1.Your profile detail text + 3.Detail user profile la user
 2.Update la Group
-4.UI bug notification CARD - FACUT -> poate trebuie wrap si in alte parti
-5.UI bug cand se schimba dintre login si selection screen - FACUT
-6.SEND notification form beutiful
-7.UI + titlu + lista - se face cu un appbar
 10 VALIDARI-INTERNET SI LOCATIE
 ----------------------------EMERNGENCY
 1.FIREBASE BUG - sa fie dinamic UG,puse pe cloud- FACUT
 2.REGISTER -
 -> show SnackBar cand registeru e good
--> modal daca vrea sa modifice locatia cand o seteaza
