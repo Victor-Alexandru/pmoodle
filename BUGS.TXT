@@ -1,11 +1,6 @@
 2.Update la Group
 10 VALIDARI-INTERNET SI LOCATIE
 ----------------------------EMERNGENCY
-1.FIREBASE BUG - sa fie dinamic UG,puse pe cloud- FACUT
-2.REGISTER -
--> show SnackBar cand registeru e good -facut
-
 
 Noi buguri:
-=la register eroarea
-- la group are overflow
+=la register eroarea -din request

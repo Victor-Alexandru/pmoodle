@@ -58,7 +58,7 @@ class GroupList(generics.ListCreateAPIView):
         new_role.save()
 
 
-class GroupDetail(generics.RetrieveDestroyAPIView):
+class GroupDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
