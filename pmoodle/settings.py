@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",  # new
-    "rest_framework_swagger",  # new
-    "corsheaders",  # new
     "monitor.apps.MonitorConfig",  # new
     "jwtauth",
 ]
