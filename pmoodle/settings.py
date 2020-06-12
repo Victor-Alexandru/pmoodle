@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",  # new
+    'django_extensions',
     "monitor.apps.MonitorConfig",  # new
     "jwtauth",
 ]
@@ -97,9 +98,17 @@ SIMPLE_JWT = {
 }
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'victor',
+        'USER': 'postgres',
+        'PASSWORD': 'ammancat2mere',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
