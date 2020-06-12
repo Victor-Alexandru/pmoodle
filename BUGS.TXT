@@ -1,6 +1,6 @@
 2.Update la Group -- FACUT
 10 VALIDARI-INTERNET SI LOCATIE
 ----------------------------EMERNGENCY
-
+sa fie responsive
 Noi buguri:
 =la register eroarea -din request
