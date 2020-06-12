@@ -1,6 +1,8 @@
 2.Update la Group -- FACUT
 10 VALIDARI-INTERNET SI LOCATIE
 ----------------------------EMERNGENCY
-sa fie responsive
+trebuie responsive la post la group si notificari
+- validare skill name
+- daca dai click pe un request si e already pending numai fa altul
 Noi buguri:
 =la register eroarea -din request
