@@ -241,6 +241,7 @@ class RequestToGroupList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         group = self.request.data.get('group_id')
         if group:
+            get_object_or_404(Group, pk=group)
             if not (RequestToGroup.objects.all().filter(group=Group.objects.get(pk=group),
                                                         request_from=self.request.user,
                                                         status='PG').exists() or UserGroup.objects.all().filter(
