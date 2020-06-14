@@ -241,7 +241,11 @@ class RequestToGroupList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         group = self.request.data.get('group_id')
         if group:
-            serializer.save(request_from=self.request.user, time=timezone.now(), group=Group.objects.get(pk=group))
+            if not (RequestToGroup.objects.all().filter(group=Group.objects.get(pk=group),
+                                                        request_from=self.request.user,
+                                                        status='PG').exists() or UserGroup.objects.all().filter(
+                user=self.request.user, group=Group.objects.get(pk=group)).exists()):
+                serializer.save(request_from=self.request.user, time=timezone.now(), group=Group.objects.get(pk=group))
         else:
             serializer.save(request_from=self.request.user, time=timezone.now())
 
